@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Info_Popup</title>
+ </head>
+
+<style>
+		input[type=text] {
+			padding : 5px;
+			border : 2px solid #ccc;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			vertical-align: bottom;
+		}
+
+		input[type=text]:focus {
+			border-color: #333;
+		}
+		
+		input[type=submit] {
+			padding: 5px 15px;
+			background: #ccc;
+			border: 0 none;
+			cursor: pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+		}
+
+		input[type=button] {
+			padding: 5px 15px;
+			background: #ccc;
+			border: 0 none;
+			cursor: pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+		}
+
+		#image_container {
+			width: 60%;
+			margin: auto;
+			border: 1px solid #ccc;
+			text-align: center;
+
+		}
+
+		#form {
+			text-align: center;
+		}
+
+		img {
+			width: 100%;
+			max-width: 50%;
+		}
+
+		table{
+			width: 70%;
+			margin: auto;
+		}
+
+
+</style>
+
+<script>
+	function setThumbnail(event) { 
+
+		var reader = new FileReader();
+
+		reader.onload = function(event) { 
+			var img = document.createElement("img"); 
+			img.setAttribute("src", event.target.result); 
+			document.querySelector("div#image_container").appendChild(img);
+		}; 
+		
+		reader.readAsDataURL(event.target.files[0]); 
+	}
+
+</script>
+
+ <body>
+			<h5 style="text-align: center;">개인정보입력 및 동의</h5>
+			<form id="form" runat="server" action="#" method="post">
+					<table>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td>전화번호</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td>주소</td>
+							<td><input type="text" />
+							<input type="submit" value="검색" /></td>
+						</tr>
+						<tr>
+							<td>시안</td>
+							<td><input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-size:8pt;">※없으시다면 디자이너 작품 중 선택해서 올려주세요.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><div id="image_container"></div></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-size:10pt;">개인정보활용 동의<input type="checkbox" name="동의" value="" /></td>
+						</tr>
+					</table>
+
+					<br>
+					<br>
+
+					<input type="button" value="신청하기" onclick="alert('신청되었습니다!');" style="cursor:pointer" />
+			</form>
+
+ </body>
+</html>
